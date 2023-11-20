@@ -43,6 +43,9 @@ void sendFirebase(const String& message, int audioIntensity) {
 void readAudioAndLightLED() { // ler o input analógico e tratar a cor do LED
   int audioIntensity = analogRead(ANALOG_AUDIO_INPUT);
 
+  // Imprime o valor lido do pino ANALOG_AUDIO_INPUT
+  Serial.println("Valor lido do pino ANALOG_AUDIO_INPUT: " + String(audioIntensity));
+
   if (audioIntensity < 2048) { // acende o verde
     digitalWrite(GREEN_PIN, HIGH);
     digitalWrite(YELLOW_PIN, LOW);
@@ -97,7 +100,7 @@ void setup() {
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+    Serial.println("Chamando a função readAudioAndLightLED...");
     readAudioAndLightLED();
 }
 
